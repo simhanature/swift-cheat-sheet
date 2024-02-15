@@ -1,7 +1,6 @@
 import Foundation
 
-/// 01. String
-
+// ======== String ========
 // get char at index
 // get the first index of the char
 // get the last index of the char
@@ -16,7 +15,7 @@ print(String(rangeStr))
 // String to Char
 // Char to String
 
-/// 02. Array
+// ========= Array =========
 // insert at index
 var arr: Array<Int> = [1, 2, 3, 4 , 5]
 arr.insert(11, at: 2)
@@ -80,7 +79,7 @@ print(arr) // [1, 4, 5, 6]
 //min / max
 var arr: Array<String> = ["z", "a", "b"]
 //min value
-print(arr.min())
+print(arr.min()) //Works on letters too
 //-------------------------------------------------------------
 //
 var arr1: Array<Int> = [101, 102, 103, 104]
@@ -147,11 +146,7 @@ var myArr = [10, 11,12, 13, 14, 15, 101, 102, 1001, 1002, 1003, 1004, 1005]
 myArr.removeAll { $0 > 1000 }
 print(myArr) //[10, 11, 12, 13, 14, 15, 101, 102]
 
-/// Set
-// insert / add
-// remove / delete
-// contains
-//
+// ========  Set ========
 //Set not ordered. All ops O(1)
 var mySet = Set<Int>()
 mySet.insert(1)
@@ -186,8 +181,7 @@ let xContains = mySet.contains(1003)
 print(xContains) //true
 print(mySet.contains(1009)) //false
 
-
-////NSOrderedSet not mutable
+//======== NSOrderedSet (not mutable) ========
 //NSOrderedSet not mutable
 //MSMutableOrderedSet to be used
 var mySet = NSMutableOrderedSet()
@@ -234,9 +228,7 @@ print(mySet)
 //    to idx: Int
 //)
 
-
-
-/// Dictionary
+//========  Dictionary ========
 var dict: [String: Int] = [:]
 
 // Set values
@@ -258,7 +250,7 @@ for (k,v) in dict {
     print(k, v)
 }
 
-/// Math functions & its limiations
+//========  Math functions & its limiations ========
 // sqrt (only on double?)
 // pow (only on double?)
 
@@ -276,7 +268,7 @@ for (k,v) in dict {
 // replace all matches
 
 
-//Functional functions
+// ======== Functional  ========
 // map
 // compactmap
 // filter
@@ -316,7 +308,7 @@ let aggrVal = myArr.reduce(into: 0) { result, val in
     count += 1
     result = result * (count - 1)/count + (val / count)
 }
-print(aggrVal) //27
+print(aggrVal) //27 returns average
 
 //Both reduce and reduce(into: can be used
 var myArr = [15,25,35,40]
@@ -353,9 +345,9 @@ print(squared[3])
 print(squared)
 
 
-// declaring closures
+// ======== declaring closures ========
 
-//Double
+// ======== Double ========
 let myNum = 2.0 //Default is double
 print(myNum) //2.0
 print(pow(myNum, 0.5)) //1.4142135623730951
@@ -370,7 +362,7 @@ let output = pow(Double(myInt), 2.0)
 //-------------------------------------------------------------
 print(output)
 
-//Num bitwise operators
+//======== Numbers ========
 print("Int.min:", UInt8.min)  // 0
 //-------------------------------------------------------------
 print("Int.max:", UInt8.max)  // 255
@@ -404,6 +396,7 @@ let minVal = UInt.min //0 default: 64bit
 let maxVal = UInt.max //18446744073709551615
 //-------------------------------------------------------------
 
+//========  Bitwise operators ========
 // <<
 var leftBitNum = 1
 var leftMovedBit = leftBitNum << 3
@@ -434,6 +427,30 @@ print("inputNum", inputNum)  //Input unchanged
 print("-------------------------")
 
 
+// OR operation
+var a: Int = 3 //11      //100
+var b: Int = 1 //01.     //001
+print (a | b)  //11 //3  //101 //4
+
+//And Operator
+var a: Int = 7 //11      //100.     111 //7 //100 + 10 + 1
+var b: Int = 2 //01.     //001.     010 //2 //10 + 0
+print (a & b)  //01 //1  //000 //0. 010 //2 //10 + 0
+
+//XOR Operator
+var a: Int = 3  //11/3  //100/4     111/7 //100 + 10 + 1
+var b: Int = 1  //01/1  //001/1     010/2 //10 + 0
+print (a ^ b)   //10/2  //101/5     101/5 //100 + 1
+
+//10101 is 2^4 + 0 *  2^3 + 2^2 + 0 * 2^1 + 2^0 => 21 //this is readable terms not bitwise operator ^
+let intVal = Int("10101", radix: 2) //Convert this number represented in the given radix/base
+print(intVal ?? 0) // Integer value prints in base 10
+
+//Convert the number to certain base
+let valueInBase2 = String(21, radix: 2) //Generate the string representing the number in given radix/base.
+print(valueInBase2) //String value printed for requested radix/base (it is 2 here //10101)
+
+
 /// ~ reverse the bits
 // reverse 0
 //input + ~input = -1 => -input = ~input + 1; For all below cases
@@ -461,8 +478,6 @@ print("outputNum:", val)  // 9223372036854775807
 print("-------------------------")
 
 
-//String bitwise operators
-
 /// Operator overloading (for Number, Int, String etc.)
 
 // +
@@ -479,7 +494,7 @@ print("-------------------------")
 
 // ~=
 
-//Comparison functions
+// ======== Comparison functions ========
 //Int
 let x = 4
 let y = 5
@@ -522,11 +537,9 @@ print("maxVal:", maxVal)
 //switch
 //
 
-
 //Tree, Heap, Graphs, Minheap, Maxheap
 //Balanced Binary Search Trees (BST)
 //Creating these Trees and Graphs
-
 
 //
 
