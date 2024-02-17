@@ -12,7 +12,7 @@ class Node<T> {
 }
 
 //Stack
-class Stack<T>  {
+class Stack<T: Equatable>  {
     
     //properties
     var _top: Node<T>?
@@ -34,6 +34,31 @@ class Stack<T>  {
     
     func peek() -> T? {
         return _top?.val
+    }
+    
+    func search(item: T) -> Int {
+        var _curItem = _top
+        var pos = 0
+        if _curItem?.val == item {
+            return pos
+        }
+        while let x = _curItem?._next {
+            pos += 1
+            if x.val == item {
+                return pos
+            }
+            _curItem = x
+        }
+        return -1
+    }
+    
+    //Print all the elements in given stack
+    static func printElements(stack: Stack) {
+        var arr: [T] = []
+        for x in stack {
+            arr.append(x)
+        }
+        print(arr)
     }
     
 }
@@ -62,30 +87,38 @@ for x in inputArr {
     stack.push(item: x)
 }
 
-print("---Print the stack elements---")
+print("\n---Print the stack elements---")
 //Print via Iterator
-for x in stack {
-    print(x)
-}
-print("---Add 21---")
+Stack.printElements(stack: stack)
+
+print("\n---Add 21---")
 //
 stack.push(item: 21)
+print("\n---Print the stack elements after adding 21---")
+//Print via Iterator
+Stack.printElements(stack: stack)
 
-print("---pop an item---")
+print("\n---pop an item---")
 //Pop the value and return
 print(stack.pop())
 
 //Check the value and return
-print("---peek an item---")
+print("\n---peek an item---")
 print(stack.peek())
 
-print("-------After a pop------")
+print("\n-------After a pop------")
 //Print after popping one value
-for x in stack {
-    print(x)
-}
 
-print("-------Printing again------")
-for x in stack {
-    print(x)
-}
+//Print via Iterator
+Stack.printElements(stack: stack)
+
+print("\n-------Printing again------")
+//Print via Iterator
+Stack.printElements(stack: stack)
+
+print("\n-------Search 7-----")
+print("pos of 7: ", stack.search(item: 7)) //somewhere
+print("pos of 0: ", stack.search(item: 0)) //bottom
+print("pos of 9: ", stack.search(item: 9)) //top
+print("pos of 100: ", stack.search(item: 100)) //non-existant
+
