@@ -3,7 +3,6 @@ class Node<T> {
     
     //Properties
     var val: T?
-    //var _prev: Node<T>?
     var _next: Node<T>?
     
     init(v: T) {
@@ -13,7 +12,7 @@ class Node<T> {
 }
 
 //Queue
-struct Queue<T> {
+struct Queue<T: Equatable> {
     
     //properties
     var _tail: Node<T>?
@@ -27,7 +26,6 @@ struct Queue<T> {
             _tail = node
         } else {
             _tail?._next = node
-            //node._prev = _tail
             _tail = node
         }
     }
@@ -40,6 +38,23 @@ struct Queue<T> {
     
     func peek() -> T? {
         return _head?.val
+    }
+    
+    func search(item: T) -> Int {
+        var pos = 0
+        if item == _head?.val {
+            return pos
+        }
+        
+        var curItem = _head
+        while let x = curItem?._next  {
+            pos += 1
+            if x.val == item {
+                return pos
+            }
+            curItem = x
+        }
+        return -1
     }
     
     static func printElements(queue: Queue) {
@@ -102,3 +117,9 @@ print(queue.dequeue())
 
 print("\n----Print Elements-----")
 Queue.printElements(queue: queue)
+
+print("\n----Search Element-----")
+print("find 6: ", queue.search(item: 6)) //head
+print("find 8: ", queue.search(item: 8)) //random
+print("find 50: ", queue.search(item: 50)) //non-existent
+print("find 103: ", queue.search(item: 103)) //tail
