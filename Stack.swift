@@ -12,19 +12,19 @@ class Node<T> {
 }
 
 //Stack
-class Stack<T: Equatable>  {
+struct Stack<T: Equatable>  {
     
     //properties
     var _top: Node<T>?
     var _iteratorPoint: Node<T>? //for iterator
     
-    func push(item: T) {
+    mutating func push(item: T) {
         var node = Node(v: item)
         node._next = _top
         _top = node
     }
     
-    func pop() -> T? {
+    mutating func pop() -> T? {
         var tempNode = _top
         _top = _top?._next
         let popVal = tempNode?.val
@@ -65,7 +65,7 @@ class Stack<T: Equatable>  {
 
 //Add Iterator
 extension Stack: IteratorProtocol, Sequence {
-    func next() -> T? {
+    mutating func next() -> T? {
         if _iteratorPoint == nil {
             _iteratorPoint = _top
             return _iteratorPoint?.val
