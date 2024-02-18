@@ -9,6 +9,8 @@ func insertionSort(arr: inout [Int]) {
                 arr.swapAt(y, moving_index)
                 //When swapped, index should change to new position
                 moving_index = y
+            } else {
+                break //since first part is sorted, once we are not swapping. no, we can move to next element
             }
         }
     }
