@@ -1,16 +1,20 @@
-func selSort(arr: inout [Int]) {
-    var swapCount = arr.count
-    while swapCount > 0 {
-        swapCount = 0
-        for i in 0..<arr.count - 1 {
-            let left = arr[i]
-            let right = arr[i+1]
-            if left > right {
-                arr.swapAt(i, i+1)
-                swapCount += 1
+func selectionSort(arr: inout [Int]) {
+    var opsCount = 0
+    for i in 0..<arr.count-1 {
+        //swapping index is i
+        //max of remaining part
+        var minValPos = i+1
+        for j in i+1..<arr.count {
+            opsCount += 1
+            if arr[j] < arr[minValPos] {
+                minValPos = j
             }
         }
+        if arr[minValPos] < arr[i] { //swap if not in order
+            arr.swapAt(minValPos, i)
+        }
     }
+    print("opsCount: ", opsCount)
 }
 
 //unique array
@@ -21,5 +25,5 @@ var input: [Int] = []
 for _ in 0..<100 {
     input.append(Int(arc4random_uniform(100)))
 }
-selSort(arr: &input)
+selectionSort(arr: &input)
 print(input)
