@@ -1,10 +1,12 @@
 func insertionSort(arr: inout [Int]) {
+    var opsCount = 0
     //
     //Start from Moving point index 1
     //Move towards left and swap
     for x in 1..<arr.count {
-        var moving_index = x
+        var moving_index = x //left pointer
         for y in (0...(moving_index - 1)).reversed() {
+            opsCount += 1
             if arr[y] > arr[moving_index] {
                 arr.swapAt(y, moving_index)
                 //When swapped, index should change to new position
@@ -14,7 +16,7 @@ func insertionSort(arr: inout [Int]) {
             }
         }
     }
-    
+    print("opsCount: ", opsCount)
 }
 
 //unique array
