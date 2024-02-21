@@ -1,6 +1,14 @@
+//Disclaimer
+//Refer here for the problem statement
+//Solution may not have been optimized
+//https://www.geeksforgeeks.org/find-length-largest-region-boolean-matrix/
+
+//Default value that will be later
+
 var xLimit = 0..<1
 var yLimit = 0..<1
 
+//Below functions can be added as sub function to findLargestRegion
 func isVisited(x: Int, y: Int, visited: inout [[Bool]]) -> Bool {
     if visited[y][x] == true {
         return true
@@ -91,6 +99,7 @@ func findLargestRegion(input: [[Int]]) -> Int{
     return maxCount
 }
 
+//Alt inout to validate
 //var input = [[0, 0, 1, 1, 0 ],
 //             [ 1, 0, 1, 1, 0 ],
 //             [ 0, 1, 0, 0, 0 ],
@@ -106,4 +115,4 @@ var input = [[0,0,1,0,0,0,0,1,0,0,0,0,0],
              [0,0,0,0,0,0,0,1,1,1,0,0,0],
              [0,0,0,0,0,0,0,1,1,0,0,0,0]]
 
-print(findLargestRegion(input: input))
+print("largest region:", findLargestRegion(input: input))
