@@ -1,4 +1,3 @@
-var greeting = "Hello, playground"
 
 //Utiilty to get substring
 //Get substring by index quickly
@@ -29,6 +28,9 @@ extension String {
     }
 
 }
+
+var greeting = "Hello, playground"
+
 //Test the ranges
 print(greeting[0...4]) //ClosedRange //Hello
 print(greeting[3...]) //PartialRangeFrom //lo, playground
