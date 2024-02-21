@@ -90,7 +90,7 @@ extension Prime {
                  
 }
 
-//
+//Swizzle can be ignored, it is just for printing the time taken and to test swizzling functionality
 //Initiate Swizzle
 Prime.swizzle()
 
